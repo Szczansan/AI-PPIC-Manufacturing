@@ -17,9 +17,11 @@ supabase = get_supabase()
 
 @st.cache_data(ttl=300)
 def get_master_data():
+    # Ambil data Master Part
     response = supabase.table("MASTER").select(
         "machine_id, PART_NAME, part_no, target_hour"
     ).execute()
+    
     if response.data:
         return pd.DataFrame(response.data)
     return pd.DataFrame()
@@ -28,124 +30,112 @@ df_master = get_master_data()
 
 # --- HEADER ---
 st.title("🏭 Input Actual Produksi")
-st.caption("Gunakan Slider untuk cepat, atau Ketik Manual untuk presisi.")
+st.caption("Input data hasil produksi per jam.")
 
 if df_master.empty:
-    st.error("Gagal memuat data Master Part.")
+    st.error("Gagal memuat data Master Part. Cek koneksi database.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 1: FILTERING MESIN & PART
+# BAGIAN 1: FILTERING (DILUAR FORM BIAR AUTO-RELOAD)
 # =========================================================================
 
+# A. PILIH MESIN
 list_mesin = sorted(df_master['machine_id'].unique())
 selected_machine = st.selectbox("Pilih Mesin", options=list_mesin)
 
+# B. PILIH PART (Filter based on Machine)
 df_filtered = df_master[df_master['machine_id'] == selected_machine]
 part_options = df_filtered['PART_NAME'].unique()
 selected_part_name = st.selectbox("Pilih Part Name", options=part_options)
 
+# C. INFO DETAIL
 if not df_filtered.empty:
     detail_part = df_filtered[df_filtered['PART_NAME'] == selected_part_name].iloc[0]
     target_val = int(detail_part['target_hour'])
     
+    # Tampilkan Info Target biar operator tau
     c1, c2 = st.columns(2)
-    with c1: st.info(f"**Part No:**\n{detail_part['part_no']}")
-    with c2: st.info(f"**Target/Jam:**\n{target_val} Pcs")
+    with c1:
+        st.info(f"**Part No:**\n{detail_part['part_no']}")
+    with c2:
+        st.info(f"**Target/Jam:**\n{target_val} Pcs")
 else:
-    st.warning("Part tidak ditemukan.")
+    st.warning("Part tidak ditemukan untuk mesin ini.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 2: LOGIC DUAL INPUT (TANPA FORM BIAR REALTIME)
+# BAGIAN 2: FORM INPUT STANDARD (STABIL & CEPAT)
 # =========================================================================
 
-# Inisialisasi State Qty kalau belum ada
-if "current_qty" not in st.session_state:
-    st.session_state.current_qty = 0
+with st.form("input_form", clear_on_submit=True):
+    st.markdown("---") 
 
-# Callback: Slider Digeser -> Update Session State
-def update_from_slider():
-    st.session_state.current_qty = st.session_state.slider_val
+    # D. LOGIC JAM (FIX WIB UTC+7)
+    now_wib = datetime.utcnow() + timedelta(hours=7)
+    current_hour = now_wib.hour 
 
-# Callback: Kotak Diketik -> Update Session State
-def update_from_input():
-    st.session_state.current_qty = st.session_state.number_val
-
-# Batas Max Slider
-max_slider = max(int(target_val * 1.5), 100)
-
-st.markdown("---") 
-
-# --- LOGIC JAM (WIB FIX) ---
-now_wib = datetime.utcnow() + timedelta(hours=7)
-current_hour = now_wib.hour 
-hours_list = list(range(0, 24))
-try:
-    default_idx = hours_list.index(current_hour)
-except:
-    default_idx = 0
-
-selected_hour = st.selectbox("Jam Ke-", options=hours_list, index=default_idx)
-
-st.write("### Actual Qty")
-
-# --- A. SLIDER ---
-safe_slider_value = min(st.session_state.current_qty, max_slider)
-
-st.slider(
-    label="Geser Cepat",
-    min_value=0,
-    max_value=max_slider,
-    value=safe_slider_value,
-    key="slider_val",    
-    on_change=update_from_slider # Aman karena diluar st.form
-)
-
-# --- B. NUMBER INPUT ---
-actual_qty = st.number_input(
-    label="Ketik Manual (Jika Over Target)",
-    min_value=0,
-    step=1,
-    value=st.session_state.current_qty,
-    key="number_val",    
-    on_change=update_from_input # Aman karena diluar st.form
-)
-
-# --- TOMBOL SUBMIT (Bukan form_submit_button) ---
-st.write("")
-submitted = st.button("💾 SIMPAN DATA", type="primary", use_container_width=True)
-
-if submitted:
-    if actual_qty == 0:
-        st.warning("⚠️ Qty 0. Pastikan ini benar.")
-    
-    data_insert = {
-        "machine_id": selected_machine,
-        "part_no": detail_part['part_no'],
-        "hour_index": selected_hour,
-        "actual_qty": actual_qty,
-        "snapshot_target": float(target_val)
-    }
-
+    hours_list = list(range(0, 24))
     try:
-        supabase.table("monitor_per_hour").insert(data_insert).execute()
-        st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs Disimpan!")
+        # Smart Default: Pilih jam sekarang otomatis
+        default_index = hours_list.index(current_hour)
+    except ValueError:
+        default_index = 0
+
+    selected_hour = st.selectbox(
+        "Jam Ke- (Jam Produksi)", 
+        options=hours_list, 
+        index=default_index
+    )
+
+    # E. INPUT ACTUAL (STANDARD KETIK)
+    # Pake number_input biasa, paling robust & anti error
+    actual_qty = st.number_input(
+        "Actual Qty (Pcs)", 
+        min_value=0, 
+        step=1,
+        help="Masukkan jumlah barang OK yang dihasilkan."
+    )
+
+    # --- TOMBOL SUBMIT ---
+    st.write("")
+    submitted = st.form_submit_button("💾 SIMPAN DATA", type="primary")
+
+    if submitted:
+        if actual_qty == 0:
+            st.warning("⚠️ Qty 0. Pastikan ini benar (Breakdown/Stop).")
         
-        # Reset angka jadi 0 setelah sukses
-        st.session_state.current_qty = 0
-        time.sleep(1)
-        st.rerun()
+        # Payload Data
+        data_insert = {
+            "machine_id": selected_machine,
+            "part_no": detail_part['part_no'],
+            "hour_index": selected_hour,
+            "actual_qty": actual_qty,
+            "snapshot_target": float(target_val)
+        }
 
-    except Exception as e:
-        st.error(f"❌ Terjadi Kesalahan: {e}")
+        try:
+            # Kirim ke Database
+            supabase.table("monitor_per_hour").insert(data_insert).execute()
+            
+            # Feedback Sukses
+            st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs berhasil disimpan!")
+            
+            # Delay dikit biar notif kebaca, lalu refresh
+            time.sleep(1)
+            st.rerun()
 
-# --- HISTORY ---
+        except Exception as e:
+            st.error(f"❌ Terjadi Kesalahan: {e}")
+
+# --- 3. HISTORY TABLE ---
 st.markdown("### 🕒 5 Input Terakhir")
+# Query 5 data terakhir buat konfirmasi visual
 last_data = supabase.table("monitor_per_hour").select("*").order("id", desc=True).limit(5).execute()
 
 if last_data.data:
     df_last = pd.DataFrame(last_data.data)
+    # Tampilkan tabel history sederhana
     st.dataframe(
         df_last[['machine_id', 'hour_index', 'actual_qty', 'created_at']], 
         hide_index=True,
