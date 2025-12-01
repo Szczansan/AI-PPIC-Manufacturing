@@ -1,0 +1,201 @@
+NO,CUSTOMER,MOLD_MAKER,part_no,PART_NAME,MODEL,MOLD_SPECIFICATION,CAV,TONAGE,TYPE_MATERIAL,GRADE_MATERIAL,COLOR_MATERIAL,CYCLE_TIME,WEIGHT_PART,WEIGHT_RUNNER,GROSS,PACKAGING,SPQ,machine_id,tonnage_machine
+1,Toyota,PT. Nusa Mold,7607A824XA,Part 1 for Rush,Rush,201x362 mm,4,1500,ABS,ABS-EM23,Silver,50,38.02,2.7,40.72,Pallet,500,C-01,1500
+2,Daihatsu,PT. Sanko Mold,DHT65388,Part 2 for Xenia,Xenia,550x326 mm,6,250,PC,PC-HP100,Beige,53,166.23,39.03,205.26,Box,200,C-02,1500
+3,Toyota,PT. Nippon Mold,7527A843XA,Part 3 for Yaris,Yaris,320x340 mm,3,250,PC,PC-HP100,Beige,77,312.88,33.85,346.73,Pallet,200,B-02,250
+4,Mitsubishi,PT. Nippon Mold,MSB59357,Part 4 for Xpander,Xpander,242x263 mm,5,850,PP,PP2D21,Beige,25,374.37,30.33,404.7,Box,100,A-05,850
+5,Daihatsu,PT. Nippon Mold,DHT81292,Part 5 for Xenia,Xenia,231x307 mm,1,250,PP,PP3A12,Black,48,578.03,79.2,657.23,Carton,500,B-05,250
+6,Mitsubishi,PT. Sanko Mold,MSB47992,Part 6 for Xpander,Xpander,382x572 mm,3,1500,PP,PP2D21,Black,31,184.78,21.53,206.31,Pallet,200,C-01,1500
+7,Toyota,PT. KSM,7414A959XA,Part 7 for Yaris,Yaris,328x244 mm,5,850,ABS,ABS-EM23,Black,102,714.05,49.02,763.07,Carton,100,A-04,850
+8,Mitsubishi,PT. InjeXpress,MSB20667,Part 8 for Triton,Triton,310x514 mm,2,250,ABS,ABS-EM23,Black,63,291.19,82.98,374.17,Carton,100,A-02,850
+9,Mitsubishi,PT. KSM,MSB78711,Part 9 for Triton,Triton,573x521 mm,1,250,PC,PC-L1225Y,Black,72,661.16,55.95,717.11,Carton,100,A-06,850
+10,Mitsubishi,PT. KSM,MSB92784,Part 10 for Pajero Sport,Pajero Sport,389x300 mm,4,1500,ABS,ABS-PA747,Silver,87,629.88,122.49,752.37,Box,200,C-02,1500
+11,Toyota,PT. KSM,7133A368XA,Part 11 for Yaris,Yaris,317x423 mm,1,1500,ABS,ABS-EM23,Black,94,298.98,93.52,392.5,Carton,500,C-02,1500
+12,Toyota,PT. InjeXpress,7765A520XA,Part 12 for Fortuner,Fortuner,528x201 mm,3,1500,PP,PP3A12,Beige,51,660.42,59.67,720.09,Pallet,500,C-01,1500
+13,Mitsubishi,PT. KSM,MSB63969,Part 13 for Triton,Triton,295x554 mm,4,250,PP,PP2D21,Black,54,494.25,55.59,549.84,Pallet,50,C-01,1500
+14,Mitsubishi,PT. Sanko Mold,MSB23586,Part 14 for Xpander,Xpander,334x465 mm,6,850,PP,PP3A12,Silver,41,712.57,226.33,938.9,Pallet,200,A-05,850
+15,Mitsubishi,PT. InjeXpress,MSB18362,Part 15 for Pajero Sport,Pajero Sport,447x384 mm,4,850,PP,PP3A12,Silver,95,81.68,10.89,92.57,Box,50,C-01,1500
+16,Daihatsu,PT. InjeXpress,DHT67021,Part 16 for Xenia,Xenia,500x541 mm,8,1500,PC,PC-HP100,Beige,23,313.5,38.96,352.46,Carton,100,C-01,1500
+17,Daihatsu,PT. KSM,DHT47974,Part 17 for Terios,Terios,404x383 mm,2,1500,PP,PP3A12,Silver,34,470.45,139.37,609.82,Carton,200,C-02,1500
+18,Mitsubishi,PT. KSM,MSB97943,Part 18 for Xpander,Xpander,484x373 mm,5,1500,ABS,ABS-EM23,Beige,64,516.01,39.44,555.45,Carton,100,C-02,1500
+19,Toyota,PT. KSM,7084A592XA,Part 19 for Rush,Rush,524x256 mm,2,1500,PC,PC-HP100,Black,85,253.34,82.33,335.67,Box,50,C-02,1500
+20,Toyota,PT. Nippon Mold,7487A213XA,Part 20 for Rush,Rush,231x369 mm,6,250,PP,PP3A12,Beige,42,729.44,128.91,858.35,Box,50,A-04,850
+21,Mitsubishi,PT. Nippon Mold,MSB63925,Part 21 for Xpander,Xpander,222x555 mm,6,250,PC,PC-L1225Y,Black,62,126.41,41.21,167.62,Carton,50,B-02,250
+22,Mitsubishi,PT. Sanko Mold,MSB90396,Part 22 for Pajero Sport,Pajero Sport,223x369 mm,4,850,ABS,ABS-PA747,Black,79,62.76,19.91,82.67,Pallet,50,A-08,850
+23,Daihatsu,PT. InjeXpress,DHT83559,Part 23 for Xenia,Xenia,415x231 mm,3,250,PP,PP3A12,Beige,60,643.31,212.7,856.01,Carton,200,A-05,850
+24,Toyota,PT. Nippon Mold,7968A753XA,Part 24 for Yaris,Yaris,593x278 mm,2,250,PC,PC-HP100,Black,73,400.23,67.94,468.17,Carton,200,B-01,250
+25,Mitsubishi,PT. InjeXpress,MSB10447,Part 25 for Triton,Triton,481x289 mm,5,1500,PP,PP3A12,Silver,92,684.96,89.31,774.27,Carton,200,C-02,1500
+26,Daihatsu,PT. KSM,DHT74919,Part 26 for Ayla,Ayla,268x440 mm,5,250,PC,PC-HP100,Black,77,531.02,34.77,565.79,Carton,200,A-08,850
+27,Mitsubishi,PT. Nusa Mold,MSB46083,Part 27 for Xpander,Xpander,216x374 mm,3,250,ABS,ABS-EM23,Silver,45,376.1,34.73,410.83,Pallet,200,B-08,250
+28,Toyota,PT. InjeXpress,7003A576XA,Part 28 for Yaris,Yaris,217x371 mm,7,1500,ABS,ABS-EM23,Silver,31,84.18,28.6,112.78,Pallet,100,C-01,1500
+29,Mitsubishi,PT. Nippon Mold,MSB24809,Part 29 for Pajero Sport,Pajero Sport,341x447 mm,7,850,ABS,ABS-EM23,Beige,20,336.56,38.52,375.08,Pallet,100,C-02,1500
+30,Daihatsu,PT. Nusa Mold,DHT87790,Part 30 for Xenia,Xenia,576x281 mm,5,850,PP,PP3A12,Beige,44,548.07,94.01,642.08,Pallet,50,A-03,850
+31,Daihatsu,PT. KSM,DHT84638,Part 31 for Xenia,Xenia,539x349 mm,2,250,PP,PP3A12,Beige,37,633.89,41.82,675.71,Box,100,A-05,850
+32,Toyota,PT. KSM,7562A703XA,Part 32 for Avanza,Avanza,531x360 mm,1,250,PC,PC-L1225Y,Silver,96,171.08,50.87,221.95,Carton,100,A-05,850
+33,Daihatsu,PT. Nusa Mold,DHT38078,Part 33 for Sigra,Sigra,509x281 mm,1,250,PC,PC-L1225Y,Black,59,12.59,3.33,15.92,Pallet,500,B-04,250
+34,Toyota,PT. Nippon Mold,7995A940XA,Part 34 for Rush,Rush,593x361 mm,8,1500,ABS,ABS-PA747,Silver,26,607.04,131.57,738.61,Box,500,C-02,1500
+35,Mitsubishi,PT. Nusa Mold,MSB59526,Part 35 for Xpander,Xpander,448x465 mm,2,850,ABS,ABS-EM23,Beige,29,423.64,76.03,499.67,Box,200,C-02,1500
+36,Toyota,PT. KSM,7552A302XA,Part 36 for Avanza,Avanza,551x307 mm,1,250,PP,PP2D21,Beige,99,205.91,66.01,271.92,Carton,50,C-01,1500
+37,Daihatsu,PT. KSM,DHT21010,Part 37 for Xenia,Xenia,352x432 mm,6,250,PC,PC-HP100,Silver,103,57.43,19.8,77.23,Box,50,B-04,250
+38,Daihatsu,PT. Nusa Mold,DHT24377,Part 38 for Xenia,Xenia,476x346 mm,5,1500,PC,PC-HP100,Black,29,578.54,72.43,650.97,Box,200,C-02,1500
+39,Toyota,PT. Nusa Mold,7176A205XA,Part 39 for Rush,Rush,320x331 mm,7,850,ABS,ABS-EM23,Black,85,538.56,94.85,633.41,Box,50,A-08,850
+40,Toyota,PT. Sanko Mold,7016A525XA,Part 40 for Rush,Rush,559x486 mm,1,250,PP,PP3A12,Silver,80,100.93,33.55,134.48,Pallet,100,B-10,250
+41,Daihatsu,PT. Sanko Mold,DHT22126,Part 41 for Sigra,Sigra,254x479 mm,8,250,ABS,ABS-EM23,Beige,66,64.86,10.81,75.67,Carton,200,A-02,850
+42,Toyota,PT. Nippon Mold,7600A819XA,Part 42 for Rush,Rush,249x573 mm,6,250,ABS,ABS-PA747,Silver,20,420.09,67.34,487.43,Carton,50,A-04,850
+43,Daihatsu,PT. Nippon Mold,DHT85196,Part 43 for Terios,Terios,478x593 mm,2,250,ABS,ABS-EM23,Silver,104,327.86,44.92,372.78,Pallet,500,B-07,250
+44,Daihatsu,PT. Sanko Mold,DHT87314,Part 44 for Terios,Terios,275x287 mm,7,850,PP,PP2D21,Black,82,295.47,36.58,332.05,Box,500,C-01,1500
+45,Mitsubishi,PT. InjeXpress,MSB72479,Part 45 for Triton,Triton,298x439 mm,8,1500,PP,PP2D21,Beige,107,117.86,28.84,146.7,Pallet,500,C-01,1500
+46,Daihatsu,PT. Nusa Mold,DHT97594,Part 46 for Terios,Terios,323x242 mm,6,850,PP,PP3A12,Silver,50,799.91,239.92,1039.83,Carton,200,A-06,850
+47,Toyota,PT. Nippon Mold,7146A722XA,Part 47 for Yaris,Yaris,321x511 mm,6,250,PP,PP3A12,Black,91,409.25,60.51,469.76,Pallet,200,A-04,850
+48,Daihatsu,PT. Sanko Mold,DHT60629,Part 48 for Xenia,Xenia,248x351 mm,7,1500,PC,PC-HP100,Beige,80,77.38,22.88,100.26,Pallet,100,C-02,1500
+49,Toyota,PT. InjeXpress,7918A363XA,Part 49 for Fortuner,Fortuner,347x361 mm,8,1500,PP,PP2D21,Beige,33,293.84,88.11,381.95,Carton,100,C-01,1500
+50,Toyota,PT. Sanko Mold,7794A405XA,Part 50 for Fortuner,Fortuner,378x372 mm,2,250,PP,PP2D21,Silver,98,379.53,104.01,483.54,Box,500,B-10,250
+51,Daihatsu,PT. Sanko Mold,DHT49514,Part 51 for Terios,Terios,222x449 mm,2,250,PC,PC-L1225Y,Silver,61,372.5,29.02,401.52,Pallet,100,B-03,250
+52,Daihatsu,PT. InjeXpress,DHT11133,Part 52 for Sigra,Sigra,204x560 mm,6,850,ABS,ABS-PA747,Silver,88,149.64,42.05,191.69,Box,200,A-01,850
+53,Mitsubishi,PT. Nusa Mold,MSB50494,Part 53 for Triton,Triton,404x543 mm,6,850,PP,PP3A12,Silver,75,769.81,133.24,903.05,Pallet,500,A-08,850
+54,Mitsubishi,PT. Nusa Mold,MSB45679,Part 54 for Xpander,Xpander,555x599 mm,4,250,PC,PC-L1225Y,Beige,24,68.79,16.3,85.09,Carton,500,C-01,1500
+55,Mitsubishi,PT. KSM,MSB53738,Part 55 for Pajero Sport,Pajero Sport,590x320 mm,4,250,ABS,ABS-PA747,Silver,101,781.16,211.88,993.04,Carton,500,C-02,1500
+56,Mitsubishi,PT. InjeXpress,MSB83379,Part 56 for Pajero Sport,Pajero Sport,473x353 mm,7,250,PC,PC-L1225Y,Black,45,534.63,45.57,580.2,Pallet,50,B-02,250
+57,Toyota,PT. Nippon Mold,7399A603XA,Part 57 for Rush,Rush,374x409 mm,4,850,ABS,ABS-EM23,Beige,89,792.84,240.15,1032.99,Pallet,500,A-01,850
+58,Mitsubishi,PT. KSM,MSB41956,Part 58 for Xpander,Xpander,477x218 mm,3,250,PP,PP3A12,Black,63,698.86,51.77,750.63,Pallet,100,A-08,850
+59,Daihatsu,PT. Nusa Mold,DHT63648,Part 59 for Terios,Terios,498x596 mm,3,850,ABS,ABS-EM23,Silver,100,375.53,126.72,502.25,Pallet,200,A-02,850
+60,Toyota,PT. Nusa Mold,7895A184XA,Part 60 for Rush,Rush,408x395 mm,6,1500,ABS,ABS-PA747,Black,27,741.25,63.63,804.88,Box,500,C-01,1500
+61,Daihatsu,PT. KSM,DHT54655,Part 61 for Xenia,Xenia,530x448 mm,4,850,PC,PC-L1225Y,Beige,57,220.9,62.7,283.6,Carton,200,A-04,850
+62,Daihatsu,PT. KSM,DHT20306,Part 62 for Sigra,Sigra,353x469 mm,6,850,PC,PC-L1225Y,Silver,90,331.96,61.79,393.75,Pallet,100,A-05,850
+63,Mitsubishi,PT. Sanko Mold,MSB55992,Part 63 for Pajero Sport,Pajero Sport,417x390 mm,5,250,PC,PC-HP100,Beige,94,614.83,76.6,691.43,Box,200,C-02,1500
+64,Mitsubishi,PT. KSM,MSB58539,Part 64 for Xpander,Xpander,233x434 mm,3,1500,ABS,ABS-PA747,Beige,40,356.96,122.48,479.44,Carton,200,C-01,1500
+65,Toyota,PT. Nippon Mold,7789A705XA,Part 65 for Vios,Vios,239x503 mm,5,1500,PC,PC-L1225Y,Beige,69,92.32,27.99,120.31,Carton,50,C-02,1500
+66,Toyota,PT. KSM,7721A660XA,Part 66 for Fortuner,Fortuner,506x231 mm,5,1500,PP,PP2D21,Beige,44,691.36,162.93,854.29,Box,200,C-01,1500
+67,Daihatsu,PT. Nippon Mold,DHT66572,Part 67 for Sigra,Sigra,363x425 mm,7,1500,ABS,ABS-PA747,Black,45,410.38,114.05,524.43,Box,500,C-01,1500
+68,Toyota,PT. InjeXpress,7493A601XA,Part 68 for Yaris,Yaris,390x572 mm,3,850,PP,PP3A12,Silver,95,667.41,93.46,760.87,Box,50,A-08,850
+69,Toyota,PT. Nusa Mold,7694A928XA,Part 69 for Vios,Vios,467x225 mm,8,1500,PP,PP2D21,Silver,59,433.27,65.85,499.12,Box,50,C-02,1500
+70,Daihatsu,PT. Nusa Mold,DHT27324,Part 70 for Terios,Terios,458x226 mm,4,1500,PC,PC-HP100,Silver,79,679.69,56.17,735.86,Box,100,C-02,1500
+71,Daihatsu,PT. Nusa Mold,DHT40032,Part 71 for Xenia,Xenia,385x555 mm,8,850,PP,PP2D21,Beige,53,569.74,118.35,688.09,Pallet,200,A-06,850
+72,Toyota,PT. Sanko Mold,7952A378XA,Part 72 for Avanza,Avanza,570x539 mm,8,1500,ABS,ABS-PA747,Silver,72,398.24,106.38,504.62,Carton,200,C-01,1500
+73,Daihatsu,PT. KSM,DHT87721,Part 73 for Sigra,Sigra,420x551 mm,8,250,ABS,ABS-EM23,Black,25,32.51,3.8,36.31,Pallet,100,B-08,250
+74,Toyota,PT. Sanko Mold,7408A274XA,Part 74 for Rush,Rush,299x273 mm,6,1500,PP,PP2D21,Silver,107,351.36,63.77,415.13,Carton,200,C-01,1500
+75,Daihatsu,PT. KSM,DHT64210,Part 75 for Terios,Terios,486x405 mm,2,850,PC,PC-HP100,Black,79,416.65,34.58,451.23,Box,100,A-05,850
+76,Toyota,PT. Sanko Mold,7500A635XA,Part 76 for Fortuner,Fortuner,342x521 mm,7,250,ABS,ABS-EM23,Beige,91,541.03,186.45,727.48,Carton,50,B-05,250
+77,Mitsubishi,PT. InjeXpress,MSB85485,Part 77 for Pajero Sport,Pajero Sport,280x537 mm,7,850,ABS,ABS-EM23,Silver,32,694.87,120.34,815.21,Box,500,A-06,850
+78,Daihatsu,PT. Sanko Mold,DHT42501,Part 78 for Ayla,Ayla,575x418 mm,7,1500,ABS,ABS-EM23,Silver,97,271.29,51.24,322.53,Box,200,C-01,1500
+79,Daihatsu,PT. Sanko Mold,DHT24148,Part 79 for Xenia,Xenia,304x397 mm,8,1500,PP,PP2D21,Black,105,328.39,114.5,442.89,Carton,50,C-02,1500
+80,Toyota,PT. InjeXpress,7515A170XA,Part 80 for Avanza,Avanza,363x406 mm,1,1500,PP,PP2D21,Black,58,313.55,81.54,395.09,Box,500,C-02,1500
+81,Mitsubishi,PT. KSM,MSB59390,Part 81 for Pajero Sport,Pajero Sport,236x308 mm,8,1500,PC,PC-HP100,Beige,58,68.96,15.69,84.65,Pallet,500,C-01,1500
+82,Daihatsu,PT. Sanko Mold,DHT75375,Part 82 for Terios,Terios,278x409 mm,1,1500,ABS,ABS-PA747,Black,45,187.53,58.21,245.74,Box,500,C-01,1500
+83,Daihatsu,PT. Nusa Mold,DHT69645,Part 83 for Xenia,Xenia,538x225 mm,3,1500,PP,PP3A12,Beige,42,54.55,13.12,67.67,Box,500,C-02,1500
+84,Daihatsu,PT. KSM,DHT75721,Part 84 for Terios,Terios,378x430 mm,1,850,PP,PP2D21,Silver,35,253.39,66.78,320.17,Box,200,C-02,1500
+85,Toyota,PT. InjeXpress,7513A822XA,Part 85 for Avanza,Avanza,597x585 mm,5,250,ABS,ABS-PA747,Black,89,210.24,63.65,273.89,Box,500,B-06,250
+86,Daihatsu,PT. Nippon Mold,DHT53637,Part 86 for Sigra,Sigra,303x523 mm,8,1500,ABS,ABS-EM23,Silver,53,775.41,67.01,842.42,Carton,500,C-01,1500
+87,Daihatsu,PT. KSM,DHT53060,Part 87 for Xenia,Xenia,331x408 mm,8,250,ABS,ABS-PA747,Black,98,126.69,32.51,159.2,Box,500,B-09,250
+88,Daihatsu,PT. InjeXpress,DHT77381,Part 88 for Sigra,Sigra,327x462 mm,4,250,PP,PP3A12,Black,52,236.67,21.93,258.6,Box,500,C-02,1500
+89,Daihatsu,PT. Nippon Mold,DHT50064,Part 89 for Ayla,Ayla,348x580 mm,7,850,PP,PP3A12,Beige,86,157.33,42.35,199.68,Pallet,50,A-06,850
+90,Mitsubishi,PT. Nippon Mold,MSB32337,Part 90 for Pajero Sport,Pajero Sport,295x206 mm,6,850,PP,PP3A12,Black,101,131.6,11.86,143.46,Carton,500,A-07,850
+91,Toyota,PT. Sanko Mold,7418A733XA,Part 91 for Yaris,Yaris,460x596 mm,1,250,PC,PC-HP100,Silver,48,18.36,4.25,22.61,Carton,100,B-02,250
+92,Daihatsu,PT. KSM,DHT18298,Part 92 for Xenia,Xenia,494x300 mm,1,850,PP,PP3A12,Beige,72,662.29,68.04,730.33,Pallet,200,A-02,850
+93,Toyota,PT. Nippon Mold,7371A237XA,Part 93 for Vios,Vios,550x407 mm,6,1500,PP,PP3A12,Beige,67,386.55,92.92,479.47,Carton,200,C-01,1500
+94,Daihatsu,PT. InjeXpress,DHT50872,Part 94 for Ayla,Ayla,355x511 mm,5,1500,ABS,ABS-PA747,Beige,60,560.69,188.82,749.51,Box,50,C-02,1500
+95,Toyota,PT. Nippon Mold,7653A996XA,Part 95 for Rush,Rush,552x274 mm,8,1500,PP,PP2D21,Beige,39,160.39,26.89,187.28,Pallet,100,C-02,1500
+96,Mitsubishi,PT. KSM,MSB92051,Part 96 for Xpander,Xpander,441x229 mm,3,1500,PP,PP2D21,Black,61,68.19,13.92,82.11,Box,500,C-02,1500
+97,Daihatsu,PT. Nippon Mold,DHT17861,Part 97 for Xenia,Xenia,215x449 mm,2,250,PC,PC-HP100,Black,52,474.56,80.04,554.6,Box,200,A-01,850
+98,Toyota,PT. InjeXpress,7058A756XA,Part 98 for Avanza,Avanza,525x540 mm,1,850,PP,PP3A12,Silver,58,432.74,43.89,476.63,Pallet,50,C-01,1500
+99,Toyota,PT. Sanko Mold,7033A134XA,Part 99 for Vios,Vios,358x583 mm,8,1500,ABS,ABS-EM23,Silver,100,39.68,8.78,48.46,Carton,200,C-02,1500
+100,Daihatsu,PT. Nippon Mold,DHT63635,Part 100 for Xenia,Xenia,329x464 mm,7,250,PC,PC-L1225Y,Black,55,643.2,179.6,822.8,Box,200,A-07,850
+101,Mitsubishi,PT. KSM,MSB34622,Part 101 for Triton,Triton,464x405 mm,5,1500,ABS,ABS-EM23,Beige,38,491.05,61.81,552.86,Carton,50,C-02,1500
+102,Daihatsu,PT. Nusa Mold,DHT39619,Part 102 for Xenia,Xenia,413x424 mm,1,250,ABS,ABS-PA747,Black,82,744.03,107.21,851.24,Carton,500,B-05,250
+103,Mitsubishi,PT. InjeXpress,MSB14887,Part 103 for Pajero Sport,Pajero Sport,541x267 mm,4,1500,PP,PP2D21,Black,23,210.65,34.63,245.28,Pallet,100,C-02,1500
+104,Toyota,PT. Sanko Mold,7376A323XA,Part 104 for Yaris,Yaris,484x227 mm,2,1500,PP,PP3A12,Beige,91,627.23,133.54,760.77,Box,500,C-02,1500
+105,Toyota,PT. InjeXpress,7933A272XA,Part 105 for Rush,Rush,326x561 mm,7,250,ABS,ABS-EM23,Silver,23,300.13,33.37,333.5,Pallet,500,A-06,850
+106,Toyota,PT. Sanko Mold,7134A156XA,Part 106 for Avanza,Avanza,478x231 mm,8,850,PC,PC-L1225Y,Black,85,77.55,13.72,91.27,Carton,200,C-01,1500
+107,Mitsubishi,PT. InjeXpress,MSB59138,Part 107 for Pajero Sport,Pajero Sport,235x277 mm,6,1500,PP,PP3A12,Silver,104,523.51,85.33,608.84,Pallet,500,C-01,1500
+108,Toyota,PT. Nippon Mold,7351A466XA,Part 108 for Vios,Vios,306x302 mm,2,250,PC,PC-HP100,Silver,95,80.95,23.23,104.18,Pallet,200,A-08,850
+109,Mitsubishi,PT. KSM,MSB57705,Part 109 for Xpander,Xpander,318x381 mm,6,850,ABS,ABS-EM23,Black,34,107.53,35.34,142.87,Carton,500,C-02,1500
+110,Toyota,PT. Nusa Mold,7153A932XA,Part 110 for Rush,Rush,259x554 mm,6,1500,PC,PC-L1225Y,Silver,73,238.46,21.59,260.05,Carton,50,C-01,1500
+111,Daihatsu,PT. Sanko Mold,DHT21483,Part 111 for Xenia,Xenia,464x392 mm,3,850,PP,PP3A12,Black,57,446.06,66.43,512.49,Pallet,200,A-01,850
+112,Daihatsu,PT. InjeXpress,DHT20542,Part 112 for Sigra,Sigra,593x343 mm,6,250,ABS,ABS-PA747,Silver,73,677.27,183.99,861.26,Carton,500,A-08,850
+113,Mitsubishi,PT. Nippon Mold,MSB14279,Part 113 for Triton,Triton,434x340 mm,3,250,PP,PP3A12,Beige,94,425.01,87.9,512.91,Box,50,B-03,250
+114,Toyota,PT. Sanko Mold,7390A976XA,Part 114 for Fortuner,Fortuner,292x281 mm,3,1500,PP,PP3A12,Beige,46,688.5,91.21,779.71,Box,100,C-01,1500
+115,Toyota,PT. KSM,7517A642XA,Part 115 for Fortuner,Fortuner,438x429 mm,4,250,PP,PP2D21,Black,33,437.66,76.8,514.46,Pallet,500,A-05,850
+116,Toyota,PT. Sanko Mold,7437A976XA,Part 116 for Avanza,Avanza,397x503 mm,2,1500,PC,PC-HP100,Beige,61,266.75,70.32,337.07,Carton,50,C-01,1500
+117,Toyota,PT. InjeXpress,7855A368XA,Part 117 for Rush,Rush,252x367 mm,4,1500,PC,PC-L1225Y,Beige,56,146.85,36.62,183.47,Box,200,C-01,1500
+118,Daihatsu,PT. Nusa Mold,DHT63698,Part 118 for Xenia,Xenia,289x390 mm,8,250,ABS,ABS-PA747,Beige,24,74.52,8.16,82.68,Pallet,50,B-04,250
+119,Daihatsu,PT. InjeXpress,DHT60292,Part 119 for Sigra,Sigra,351x469 mm,8,850,ABS,ABS-EM23,Black,102,788.29,193.34,981.63,Pallet,500,A-08,850
+120,Toyota,PT. KSM,7222A613XA,Part 120 for Avanza,Avanza,384x350 mm,1,1500,PP,PP3A12,Silver,69,461.39,68.78,530.17,Box,500,C-01,1500
+121,Daihatsu,PT. InjeXpress,DHT13621,Part 121 for Ayla,Ayla,413x297 mm,2,250,ABS,ABS-PA747,Silver,84,797.73,241.75,1039.48,Pallet,100,B-06,250
+122,Toyota,PT. Sanko Mold,7203A579XA,Part 122 for Fortuner,Fortuner,349x577 mm,6,250,PC,PC-HP100,Black,41,118.66,9.39,128.05,Box,500,B-08,250
+123,Mitsubishi,PT. Sanko Mold,MSB13288,Part 123 for Xpander,Xpander,265x458 mm,3,250,PC,PC-HP100,Beige,101,464.33,157.14,621.47,Box,500,A-01,850
+124,Toyota,PT. Nusa Mold,7738A858XA,Part 124 for Rush,Rush,313x270 mm,4,850,PP,PP2D21,Silver,77,395.48,68.33,463.81,Pallet,50,A-08,850
+125,Daihatsu,PT. KSM,DHT99001,Part 125 for Xenia,Xenia,486x299 mm,4,250,PC,PC-HP100,Black,45,711.79,47.04,758.83,Carton,500,B-01,250
+126,Daihatsu,PT. InjeXpress,DHT88628,Part 126 for Ayla,Ayla,239x480 mm,4,1500,PC,PC-HP100,Black,106,266.4,65.23,331.63,Pallet,200,C-01,1500
+127,Toyota,PT. Sanko Mold,7233A747XA,Part 127 for Fortuner,Fortuner,472x397 mm,7,250,PC,PC-L1225Y,Black,65,230.05,74.97,305.02,Box,200,A-04,850
+128,Mitsubishi,PT. InjeXpress,MSB75718,Part 128 for Pajero Sport,Pajero Sport,400x355 mm,4,850,ABS,ABS-EM23,Silver,45,593.4,37.39,630.79,Box,500,A-03,850
+129,Daihatsu,PT. InjeXpress,DHT99305,Part 129 for Xenia,Xenia,590x504 mm,1,1500,ABS,ABS-EM23,Beige,66,407.56,31.88,439.44,Carton,200,C-01,1500
+130,Toyota,PT. KSM,7032A837XA,Part 130 for Rush,Rush,468x261 mm,4,250,PP,PP2D21,Beige,82,406.12,86.03,492.15,Pallet,100,B-03,250
+131,Daihatsu,PT. Sanko Mold,DHT52932,Part 131 for Sigra,Sigra,557x476 mm,6,850,ABS,ABS-PA747,Beige,44,22.53,3.53,26.06,Pallet,500,A-04,850
+132,Toyota,PT. Sanko Mold,7018A407XA,Part 132 for Rush,Rush,560x591 mm,1,1500,PP,PP3A12,Silver,46,279.76,29.48,309.24,Carton,50,C-01,1500
+133,Mitsubishi,PT. Nippon Mold,MSB58531,Part 133 for Xpander,Xpander,535x586 mm,5,250,ABS,ABS-PA747,Silver,38,664.62,59.15,723.77,Box,200,A-01,850
+134,Toyota,PT. Nusa Mold,7658A399XA,Part 134 for Avanza,Avanza,581x552 mm,4,1500,PP,PP2D21,Black,70,375.88,78.76,454.64,Box,200,C-02,1500
+135,Toyota,PT. InjeXpress,7487A129XA,Part 135 for Vios,Vios,596x499 mm,4,850,ABS,ABS-EM23,Silver,31,696.93,233.38,930.31,Carton,500,A-08,850
+136,Mitsubishi,PT. KSM,MSB35521,Part 136 for Triton,Triton,266x440 mm,4,250,PP,PP3A12,Beige,45,27.49,4.86,32.35,Pallet,500,C-01,1500
+137,Daihatsu,PT. KSM,DHT84867,Part 137 for Sigra,Sigra,515x387 mm,5,850,ABS,ABS-EM23,Silver,74,585.61,37.39,623.0,Box,200,C-02,1500
+138,Mitsubishi,PT. KSM,MSB55681,Part 138 for Triton,Triton,586x547 mm,6,250,PC,PC-HP100,Silver,109,376.83,63.15,439.98,Pallet,100,A-02,850
+139,Daihatsu,PT. KSM,DHT49988,Part 139 for Ayla,Ayla,484x392 mm,8,850,PC,PC-L1225Y,Beige,22,193.38,11.67,205.05,Carton,200,A-06,850
+140,Mitsubishi,PT. Sanko Mold,MSB73035,Part 140 for Xpander,Xpander,522x204 mm,2,1500,PC,PC-L1225Y,Black,73,582.69,56.4,639.09,Box,500,C-01,1500
+141,Toyota,PT. KSM,7927A898XA,Part 141 for Fortuner,Fortuner,250x446 mm,8,250,PC,PC-L1225Y,Black,39,789.73,130.75,920.48,Box,500,C-02,1500
+142,Mitsubishi,PT. KSM,MSB32562,Part 142 for Pajero Sport,Pajero Sport,356x228 mm,1,850,PC,PC-L1225Y,Silver,22,532.31,114.53,646.84,Carton,50,A-03,850
+143,Mitsubishi,PT. InjeXpress,MSB60714,Part 143 for Triton,Triton,320x495 mm,3,1500,PC,PC-L1225Y,Silver,96,702.12,65.3,767.42,Pallet,500,C-02,1500
+144,Mitsubishi,PT. InjeXpress,MSB21818,Part 144 for Pajero Sport,Pajero Sport,403x362 mm,4,1500,ABS,ABS-EM23,Black,96,573.21,70.27,643.48,Pallet,100,C-01,1500
+145,Daihatsu,PT. Nusa Mold,DHT11990,Part 145 for Sigra,Sigra,408x358 mm,4,1500,ABS,ABS-PA747,Black,100,672.58,125.06,797.64,Box,200,C-02,1500
+146,Daihatsu,PT. Nippon Mold,DHT43024,Part 146 for Xenia,Xenia,548x450 mm,1,1500,ABS,ABS-PA747,Black,101,730.8,81.41,812.21,Carton,200,C-01,1500
+147,Daihatsu,PT. Nusa Mold,DHT20303,Part 147 for Xenia,Xenia,472x528 mm,7,850,PP,PP3A12,Silver,55,100.61,24.81,125.42,Carton,100,A-06,850
+148,Toyota,PT. Nippon Mold,7865A305XA,Part 148 for Avanza,Avanza,227x586 mm,8,1500,PP,PP2D21,Beige,100,792.7,69.35,862.05,Pallet,100,C-01,1500
+149,Mitsubishi,PT. Nusa Mold,MSB41459,Part 149 for Pajero Sport,Pajero Sport,322x521 mm,1,850,PC,PC-L1225Y,Silver,39,396.1,62.48,458.58,Pallet,100,A-08,850
+150,Mitsubishi,PT. Sanko Mold,MSB44793,Part 150 for Triton,Triton,345x539 mm,8,850,PP,PP2D21,Silver,75,59.81,5.05,64.86,Pallet,200,C-02,1500
+151,Daihatsu,PT. InjeXpress,DHT75327,Part 151 for Sigra,Sigra,529x349 mm,6,250,PP,PP3A12,Beige,86,122.02,27.09,149.11,Carton,100,A-07,850
+152,Daihatsu,PT. Sanko Mold,DHT50158,Part 152 for Sigra,Sigra,595x255 mm,5,1500,ABS,ABS-EM23,Beige,46,36.57,11.24,47.81,Box,200,C-01,1500
+153,Mitsubishi,PT. Sanko Mold,MSB41882,Part 153 for Pajero Sport,Pajero Sport,333x476 mm,6,250,PP,PP3A12,Silver,104,240.4,46.28,286.68,Carton,500,C-01,1500
+154,Toyota,PT. Nippon Mold,7525A580XA,Part 154 for Avanza,Avanza,523x259 mm,6,1500,PP,PP3A12,Silver,56,662.31,56.89,719.2,Pallet,100,C-02,1500
+155,Daihatsu,PT. Nusa Mold,DHT82586,Part 155 for Terios,Terios,548x342 mm,5,250,PC,PC-HP100,Black,37,528.97,90.61,619.58,Pallet,500,A-02,850
+156,Toyota,PT. Sanko Mold,7648A794XA,Part 156 for Vios,Vios,585x276 mm,4,250,ABS,ABS-PA747,Silver,93,135.85,39.4,175.25,Pallet,100,A-05,850
+157,Mitsubishi,PT. KSM,MSB59903,Part 157 for Pajero Sport,Pajero Sport,473x369 mm,6,1500,PC,PC-L1225Y,Black,31,536.21,49.33,585.54,Pallet,100,C-01,1500
+158,Toyota,PT. Sanko Mold,7676A670XA,Part 158 for Rush,Rush,480x336 mm,8,250,ABS,ABS-PA747,Black,75,436.99,107.97,544.96,Box,100,B-08,250
+159,Toyota,PT. InjeXpress,7090A706XA,Part 159 for Fortuner,Fortuner,470x314 mm,4,1500,PP,PP3A12,Black,21,317.8,111.21,429.01,Box,100,C-02,1500
+160,Mitsubishi,PT. KSM,MSB43195,Part 160 for Triton,Triton,328x349 mm,2,250,PP,PP2D21,Silver,43,85.09,29.6,114.69,Pallet,50,A-01,850
+161,Toyota,PT. Nippon Mold,7522A195XA,Part 161 for Yaris,Yaris,598x279 mm,5,850,PP,PP2D21,Beige,66,431.21,44.12,475.33,Box,50,A-08,850
+162,Mitsubishi,PT. Nusa Mold,MSB81583,Part 162 for Pajero Sport,Pajero Sport,311x215 mm,4,850,PC,PC-HP100,Black,56,275.42,57.55,332.97,Pallet,500,C-02,1500
+163,Daihatsu,PT. Nippon Mold,DHT77408,Part 163 for Ayla,Ayla,596x260 mm,5,1500,ABS,ABS-PA747,Silver,103,454.54,62.76,517.3,Carton,50,C-01,1500
+164,Mitsubishi,PT. InjeXpress,MSB88274,Part 164 for Triton,Triton,343x596 mm,4,850,ABS,ABS-EM23,Silver,54,425.4,79.82,505.22,Pallet,50,C-01,1500
+165,Mitsubishi,PT. Nippon Mold,MSB26185,Part 165 for Triton,Triton,527x585 mm,3,1500,PP,PP3A12,Beige,80,226.91,11.6,238.51,Box,50,C-02,1500
+166,Daihatsu,PT. Sanko Mold,DHT82334,Part 166 for Ayla,Ayla,221x453 mm,3,850,PC,PC-HP100,Black,20,509.63,161.32,670.95,Carton,100,A-07,850
+167,Toyota,PT. Nippon Mold,7414A258XA,Part 167 for Rush,Rush,316x494 mm,5,250,PC,PC-L1225Y,Silver,42,277.71,17.18,294.89,Carton,50,C-01,1500
+168,Mitsubishi,PT. Sanko Mold,MSB77760,Part 168 for Pajero Sport,Pajero Sport,255x367 mm,4,250,PP,PP2D21,Beige,84,158.79,9.63,168.42,Carton,500,B-07,250
+169,Mitsubishi,PT. Nusa Mold,MSB40526,Part 169 for Xpander,Xpander,406x224 mm,7,250,PC,PC-HP100,Black,40,90.74,18.71,109.45,Box,50,A-06,850
+170,Mitsubishi,PT. Nippon Mold,MSB14995,Part 170 for Pajero Sport,Pajero Sport,210x585 mm,4,850,PC,PC-L1225Y,Silver,110,266.19,53.55,319.74,Box,50,A-05,850
+171,Toyota,PT. KSM,7100A698XA,Part 171 for Rush,Rush,487x393 mm,8,1500,PC,PC-HP100,Black,33,619.13,96.24,715.37,Carton,200,C-01,1500
+172,Toyota,PT. Nippon Mold,7600A349XA,Part 172 for Yaris,Yaris,229x389 mm,1,250,PC,PC-HP100,Beige,103,258.02,81.22,339.24,Box,500,B-07,250
+173,Mitsubishi,PT. Nusa Mold,MSB81709,Part 173 for Xpander,Xpander,597x410 mm,1,1500,ABS,ABS-EM23,Beige,65,59.04,17.91,76.95,Box,100,C-01,1500
+174,Toyota,PT. Nippon Mold,7525A179XA,Part 174 for Fortuner,Fortuner,321x271 mm,3,250,PP,PP3A12,Silver,70,518.09,147.0,665.09,Pallet,500,A-03,850
+175,Daihatsu,PT. Nippon Mold,DHT12291,Part 175 for Xenia,Xenia,223x322 mm,3,850,ABS,ABS-PA747,Beige,68,780.14,242.71,1022.85,Box,50,A-03,850
+176,Daihatsu,PT. KSM,DHT88528,Part 176 for Xenia,Xenia,472x268 mm,4,850,PC,PC-L1225Y,Silver,89,746.24,190.95,937.19,Box,100,A-04,850
+177,Mitsubishi,PT. Sanko Mold,MSB71109,Part 177 for Triton,Triton,541x474 mm,5,250,PC,PC-L1225Y,Beige,100,739.78,235.98,975.76,Box,500,A-01,850
+178,Toyota,PT. Nusa Mold,7406A931XA,Part 178 for Yaris,Yaris,599x402 mm,2,250,ABS,ABS-PA747,Silver,103,661.81,164.2,826.01,Box,200,B-05,250
+179,Daihatsu,PT. Nusa Mold,DHT97502,Part 179 for Xenia,Xenia,317x223 mm,6,1500,PC,PC-L1225Y,Beige,83,527.91,151.82,679.73,Box,100,C-01,1500
+180,Daihatsu,PT. Sanko Mold,DHT50776,Part 180 for Xenia,Xenia,583x274 mm,3,1500,PP,PP3A12,Beige,62,326.07,36.83,362.9,Pallet,500,C-02,1500
+181,Mitsubishi,PT. Nusa Mold,MSB60745,Part 181 for Triton,Triton,456x445 mm,7,850,PP,PP3A12,Silver,56,210.1,57.71,267.81,Box,50,A-08,850
+182,Toyota,PT. InjeXpress,7412A104XA,Part 182 for Rush,Rush,328x415 mm,4,250,PP,PP3A12,Beige,73,647.01,137.58,784.59,Pallet,100,C-02,1500
+183,Mitsubishi,PT. Nusa Mold,MSB71641,Part 183 for Pajero Sport,Pajero Sport,334x337 mm,8,250,PC,PC-L1225Y,Beige,100,453.81,146.47,600.28,Carton,200,C-01,1500
+184,Mitsubishi,PT. Nippon Mold,MSB64090,Part 184 for Xpander,Xpander,368x274 mm,6,250,ABS,ABS-PA747,Beige,61,121.95,18.86,140.81,Pallet,50,A-08,850
+185,Daihatsu,PT. Nusa Mold,DHT98452,Part 185 for Terios,Terios,550x331 mm,2,250,PP,PP2D21,Silver,99,641.69,99.4,741.09,Box,200,A-03,850
+186,Daihatsu,PT. KSM,DHT52219,Part 186 for Ayla,Ayla,497x578 mm,2,250,PP,PP3A12,Black,53,465.49,118.03,583.52,Carton,50,B-09,250
+187,Daihatsu,PT. InjeXpress,DHT28026,Part 187 for Terios,Terios,351x314 mm,8,1500,PP,PP2D21,Silver,40,656.66,72.1,728.76,Box,50,C-02,1500
+188,Daihatsu,PT. InjeXpress,DHT11111,Part 188 for Ayla,Ayla,306x543 mm,2,850,PP,PP2D21,Silver,96,486.22,134.14,620.36,Box,50,A-08,850
+189,Mitsubishi,PT. Sanko Mold,MSB77762,Part 189 for Xpander,Xpander,523x313 mm,1,1500,ABS,ABS-EM23,Silver,92,399.91,126.02,525.93,Carton,500,C-02,1500
+190,Mitsubishi,PT. Sanko Mold,MSB66813,Part 190 for Pajero Sport,Pajero Sport,234x296 mm,1,850,PC,PC-HP100,Silver,71,411.45,131.9,543.35,Pallet,100,A-07,850
+191,Mitsubishi,PT. Sanko Mold,MSB50616,Part 191 for Triton,Triton,306x291 mm,7,850,ABS,ABS-PA747,Black,70,407.7,116.02,523.72,Box,200,A-06,850
+192,Mitsubishi,PT. Sanko Mold,MSB56959,Part 192 for Pajero Sport,Pajero Sport,315x467 mm,7,1500,ABS,ABS-EM23,Beige,68,48.46,7.14,55.6,Carton,200,C-01,1500
+193,Daihatsu,PT. Nippon Mold,DHT46980,Part 193 for Sigra,Sigra,482x341 mm,2,1500,PP,PP3A12,Beige,102,350.73,104.99,455.72,Pallet,500,C-01,1500
+194,Mitsubishi,PT. KSM,MSB22692,Part 194 for Pajero Sport,Pajero Sport,208x394 mm,2,250,ABS,ABS-PA747,Silver,47,151.3,40.84,192.14,Carton,200,C-02,1500
+195,Toyota,PT. Sanko Mold,7758A548XA,Part 195 for Avanza,Avanza,503x516 mm,1,1500,PC,PC-HP100,Black,36,134.61,19.38,153.99,Box,200,C-01,1500
+196,Toyota,PT. Sanko Mold,7011A168XA,Part 196 for Vios,Vios,584x541 mm,5,250,ABS,ABS-PA747,Black,85,738.49,223.05,961.54,Carton,200,A-02,850
+197,Mitsubishi,PT. InjeXpress,MSB90947,Part 197 for Xpander,Xpander,381x505 mm,3,250,PP,PP2D21,Black,61,187.81,18.65,206.46,Box,50,B-06,250
+198,Daihatsu,PT. Sanko Mold,DHT43952,Part 198 for Sigra,Sigra,560x266 mm,1,850,PP,PP2D21,Black,81,536.87,150.47,687.34,Pallet,50,C-01,1500
+199,Mitsubishi,PT. InjeXpress,MSB93030,Part 199 for Triton,Triton,563x579 mm,5,250,PP,PP2D21,Black,93,344.97,80.73,425.7,Carton,500,B-08,250
+200,Daihatsu,PT. KSM,DHT94106,Part 200 for Sigra,Sigra,283x203 mm,3,1500,PP,PP2D21,Silver,34,436.16,150.55,586.71,Pallet,100,C-02,1500
