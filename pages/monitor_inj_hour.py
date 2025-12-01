@@ -3,6 +3,7 @@ import pandas as pd
 from datetime import datetime
 import time
 from supabase_client import get_supabase
+from datetime import datetime, timedelta
 
 # --- 1. IMPORT NAVBAR DARI FOLDER COMPONENTS ---
 from components.navbar import show_navbar  # <--- TAMBAHAN 1
@@ -72,7 +73,9 @@ with st.form("input_form", clear_on_submit=True):
     st.markdown("---") # Garis pemisah biar rapi
     
     # D. LOGIC JAM (Smart Default)
-    current_hour = datetime.now().hour
+    now_wib = datetime.utcnow() + timedelta(hours=7)
+    current_hour = now_wib.hour 
+
     hours_list = list(range(0, 24))
     try:
         default_index = hours_list.index(current_hour)
@@ -128,4 +131,5 @@ if last_data.data:
         df_last[['machine_id', 'hour_index', 'actual_qty', 'created_at']], 
         hide_index=True,
         use_container_width=True
+
     )
