@@ -1,4 +1,7 @@
 streamlit
+streamlit-option-menu
+ortools
 pandas
 supabase
 requests
+plotly
