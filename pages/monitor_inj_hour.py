@@ -28,78 +28,92 @@ df_master = get_master_data()
 
 # --- HEADER ---
 st.title("🏭 Input Actual Produksi")
-st.caption("Mode: Slider Input (Mobile Friendly)")
+st.caption("Gunakan Slider untuk cepat, atau Ketik Manual untuk presisi.")
 
 if df_master.empty:
     st.error("Gagal memuat data Master Part.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 1: INTERACTIVE SELECTION (FILTERING)
+# BAGIAN 1: FILTERING MESIN & PART
 # =========================================================================
 
-# A. PILIH MESIN
 list_mesin = sorted(df_master['machine_id'].unique())
 selected_machine = st.selectbox("Pilih Mesin", options=list_mesin)
 
-# B. PILIH PART
 df_filtered = df_master[df_master['machine_id'] == selected_machine]
 part_options = df_filtered['PART_NAME'].unique()
 selected_part_name = st.selectbox("Pilih Part Name", options=part_options)
 
-# C. INFO DETAIL (Ambil Target buat Batas Slider)
 if not df_filtered.empty:
     detail_part = df_filtered[df_filtered['PART_NAME'] == selected_part_name].iloc[0]
     target_val = int(detail_part['target_hour'])
     
     c1, c2 = st.columns(2)
-    with c1:
-        st.info(f"**Part No:**\n{detail_part['part_no']}")
-    with c2:
-        st.info(f"**Target/Jam:**\n{target_val} Pcs")
+    with c1: st.info(f"**Part No:**\n{detail_part['part_no']}")
+    with c2: st.info(f"**Target/Jam:**\n{target_val} Pcs")
 else:
     st.warning("Part tidak ditemukan.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 2: FORM INPUT DENGAN SLIDER
+# BAGIAN 2: LOGIC DUAL INPUT (SLIDER + MANUAL)
 # =========================================================================
 
-with st.form("input_form", clear_on_submit=True):
+# Inisialisasi State Qty kalau belum ada
+if "current_qty" not in st.session_state:
+    st.session_state.current_qty = 0
+
+# Callback 1: Kalau Slider Digeser -> Update Session State
+def update_from_slider():
+    st.session_state.current_qty = st.session_state.slider_val
+
+# Callback 2: Kalau Kotak Diketik -> Update Session State
+def update_from_input():
+    st.session_state.current_qty = st.session_state.number_val
+
+# Batas Max Slider (Target x 1.5 biar aman, min 100)
+max_slider = max(int(target_val * 1.5), 100)
+
+with st.form("input_form", clear_on_submit=False): # clear_on_submit False biar angka gak ilang pas error
     st.markdown("---") 
 
-    # D. LOGIC JAM (WIB FIX)
+    # Logic Jam WIB
     now_wib = datetime.utcnow() + timedelta(hours=7)
     current_hour = now_wib.hour 
-
     hours_list = list(range(0, 24))
     try:
-        default_index = hours_list.index(current_hour)
-    except ValueError:
-        default_index = 0
+        default_idx = hours_list.index(current_hour)
+    except:
+        default_idx = 0
 
-    selected_hour = st.selectbox(
-        "Jam Ke- (Jam Produksi)", 
-        options=hours_list, 
-        index=default_index
+    selected_hour = st.selectbox("Jam Ke-", options=hours_list, index=default_idx)
+
+    st.write("### Actual Qty")
+    
+    # --- A. SLIDER (INPUT CEPAT) ---
+    # Value slider kita ambil dari session state.
+    # Tapi harus dijaga: kalau angka manual > max slider, slider mentok di max aja biar gak error.
+    safe_slider_value = min(st.session_state.current_qty, max_slider)
+    
+    st.slider(
+        label="Geser Cepat",
+        min_value=0,
+        max_value=max_slider,
+        value=safe_slider_value,
+        key="slider_val",    # Key unik
+        on_change=update_from_slider # Trigger fungsi update
     )
 
-    # E. SLIDER INPUT (SMART RANGE)
-    st.write("### Actual Qty (Geser)")
-    
-    # Logic Max Slider: 
-    # Kita kasih napas 2x lipat dari target. 
-    # Misal target 100, slider mentok di 200. Biar operator gampang ngepasinnya.
-    # Tapi minimal slider mentok di 100 biar gak kekecilan.
-    max_slider_val = max(target_val * 2, 100)
-    
-    actual_qty = st.slider(
-        label="Geser tombol ini sesuai hasil produksi",
+    # --- B. NUMBER INPUT (INPUT PRESISI & OVER TARGET) ---
+    # Ini input utama yang nilai akhirnya kita pakai
+    actual_qty = st.number_input(
+        label="Ketik Manual (Jika Over Target)",
         min_value=0,
-        max_value=max_slider_val,
-        value=0, # Default 0
-        step=1,  # Kelipatan 1
-        help=f"Max slider diset ke {max_slider_val} berdasarkan target mesin."
+        step=1,
+        value=st.session_state.current_qty,
+        key="number_val",    # Key unik
+        on_change=update_from_input # Trigger fungsi update
     )
 
     # --- TOMBOL SUBMIT ---
@@ -107,8 +121,11 @@ with st.form("input_form", clear_on_submit=True):
     submitted = st.form_submit_button("💾 SIMPAN DATA", type="primary")
 
     if submitted:
+        # Pake nilai dari 'actual_qty' (Input Kotak) karena itu yang paling akurat
+        # Walaupun slider mentok 100, kalau kotak diisi 105, data yang diambil 105.
+        
         if actual_qty == 0:
-            st.warning("⚠️ Qty 0. Pastikan ini benar (Breakdown/Stop).")
+            st.warning("⚠️ Qty 0. Pastikan ini benar.")
         
         data_insert = {
             "machine_id": selected_machine,
@@ -121,13 +138,17 @@ with st.form("input_form", clear_on_submit=True):
         try:
             supabase.table("monitor_per_hour").insert(data_insert).execute()
             st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs Disimpan!")
+            
+            # Reset angka jadi 0 setelah sukses
+            st.session_state.current_qty = 0
+            # Kita refresh page manual biar slider balik ke 0
             time.sleep(1)
             st.rerun()
 
         except Exception as e:
             st.error(f"❌ Terjadi Kesalahan: {e}")
 
-# --- 3. HISTORY ---
+# --- HISTORY ---
 st.markdown("### 🕒 5 Input Terakhir")
 last_data = supabase.table("monitor_per_hour").select("*").order("id", desc=True).limit(5).execute()
 
@@ -179,4 +200,5 @@ if last_data.data:
         hide_index=True,
         use_container_width=True
     )
+
 
