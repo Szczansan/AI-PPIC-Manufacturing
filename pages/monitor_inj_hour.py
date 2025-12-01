@@ -4,13 +4,13 @@ from datetime import datetime, timedelta
 import time
 from supabase_client import get_supabase
 
-# --- 1. IMPORT NAVBAR DARI FOLDER COMPONENTS ---
+# --- 1. IMPORT NAVBAR ---
 from components.navbar import show_navbar 
 
 # --- 2. SETUP ---
 st.set_page_config(page_title="Input Produksi", layout="centered")
 
-# --- 3. PANGGIL NAVBAR DISINI ---
+# --- 3. NAVBAR ---
 show_navbar() 
 
 supabase = get_supabase()
@@ -20,7 +20,6 @@ def get_master_data():
     response = supabase.table("MASTER").select(
         "machine_id, PART_NAME, part_no, target_hour"
     ).execute()
-    
     if response.data:
         return pd.DataFrame(response.data)
     return pd.DataFrame()
@@ -29,14 +28,14 @@ df_master = get_master_data()
 
 # --- HEADER ---
 st.title("🏭 Input Actual Produksi")
-st.caption("Pastikan data yang diinput sesuai dengan kondisi mesin saat ini.")
+st.caption("Mode: Slider Input (Mobile Friendly)")
 
 if df_master.empty:
-    st.error("Gagal memuat data Master Part. Cek koneksi database.")
+    st.error("Gagal memuat data Master Part.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 1: INTERACTIVE SELECTION
+# BAGIAN 1: INTERACTIVE SELECTION (FILTERING)
 # =========================================================================
 
 # A. PILIH MESIN
@@ -48,98 +47,97 @@ df_filtered = df_master[df_master['machine_id'] == selected_machine]
 part_options = df_filtered['PART_NAME'].unique()
 selected_part_name = st.selectbox("Pilih Part Name", options=part_options)
 
-# C. INFO DETAIL
+# C. INFO DETAIL (Ambil Target buat Batas Slider)
 if not df_filtered.empty:
     detail_part = df_filtered[df_filtered['PART_NAME'] == selected_part_name].iloc[0]
+    target_val = int(detail_part['target_hour'])
     
     c1, c2 = st.columns(2)
     with c1:
         st.info(f"**Part No:**\n{detail_part['part_no']}")
     with c2:
-        st.info(f"**Target/Jam:**\n{detail_part['target_hour']} Pcs")
+        st.info(f"**Target/Jam:**\n{target_val} Pcs")
 else:
-    st.warning("Part tidak ditemukan untuk mesin ini.")
+    st.warning("Part tidak ditemukan.")
     st.stop()
 
 # =========================================================================
-# BAGIAN 2: NUMPAD LOGIC (Input Angka Ala ATM)
+# BAGIAN 2: FORM INPUT DENGAN SLIDER
 # =========================================================================
 
-# Inisialisasi State Angka
-if "qty_input" not in st.session_state:
-    st.session_state.qty_input = 0
+with st.form("input_form", clear_on_submit=True):
+    st.markdown("---") 
 
-# Fungsi Callback
-def add_digit(digit):
-    current_val = str(st.session_state.qty_input)
-    if current_val == "0":
-        st.session_state.qty_input = int(digit)
-    else:
-        st.session_state.qty_input = int(current_val + str(digit))
+    # D. LOGIC JAM (WIB FIX)
+    now_wib = datetime.utcnow() + timedelta(hours=7)
+    current_hour = now_wib.hour 
 
-def backspace():
-    current_val = str(st.session_state.qty_input)
-    if len(current_val) > 1:
-        st.session_state.qty_input = int(current_val[:-1])
-    else:
-        st.session_state.qty_input = 0
+    hours_list = list(range(0, 24))
+    try:
+        default_index = hours_list.index(current_hour)
+    except ValueError:
+        default_index = 0
 
-def clear_input():
-    st.session_state.qty_input = 0
+    selected_hour = st.selectbox(
+        "Jam Ke- (Jam Produksi)", 
+        options=hours_list, 
+        index=default_index
+    )
 
-# =========================================================================
-# BAGIAN 3: INPUT & SUBMIT (TANPA FORM BIAR NUMPAD JALAN)
-# =========================================================================
-
-st.markdown("---") 
-
-# D. LOGIC JAM (WIB FIX)
-now_wib = datetime.utcnow() + timedelta(hours=7)
-current_hour = now_wib.hour 
-
-hours_list = list(range(0, 24))
-try:
-    default_index = hours_list.index(current_hour)
-except ValueError:
-    default_index = 0
-
-selected_hour = st.selectbox(
-    "Jam Ke- (Jam Produksi)", 
-    options=hours_list, 
-    index=default_index
-)
-
-# E. INPUT ACTUAL (Terhubung ke Numpad)
-st.write("Actual Qty (Pcs)")
-actual_qty = st.number_input(
-    label="qty_hidden", 
-    label_visibility="collapsed",
-    min_value=0, 
-    step=1, 
-    key="qty_input" # <--- Kuncinya: nyambung ke session_state
-)
-
-# F. TAMPILAN TOMBOL NUMPAD
-with st.expander("🔢 Buka Numpad (Input Cepat)", expanded=True):
-    # Grid 3 Kolom
-    col_n1, col_n2, col_n3 = st.columns(3)
+    # E. SLIDER INPUT (SMART RANGE)
+    st.write("### Actual Qty (Geser)")
     
-    with col_n1: st.button("1", use_container_width=True, on_click=add_digit, args=(1,))
-    with col_n2: st.button("2", use_container_width=True, on_click=add_digit, args=(2,))
-    with col_n3: st.button("3", use_container_width=True, on_click=add_digit, args=(3,))
+    # Logic Max Slider: 
+    # Kita kasih napas 2x lipat dari target. 
+    # Misal target 100, slider mentok di 200. Biar operator gampang ngepasinnya.
+    # Tapi minimal slider mentok di 100 biar gak kekecilan.
+    max_slider_val = max(target_val * 2, 100)
     
-    with col_n1: st.button("4", use_container_width=True, on_click=add_digit, args=(4,))
-    with col_n2: st.button("5", use_container_width=True, on_click=add_digit, args=(5,))
-    with col_n3: st.button("6", use_container_width=True, on_click=add_digit, args=(6,))
-    
-    with col_n1: st.button("7", use_container_width=True, on_click=add_digit, args=(7,))
-    with col_n2: st.button("8", use_container_width=True, on_click=add_digit, args=(8,))
-    with col_n3: st.button("9", use_container_width=True, on_click=add_digit, args=(9,))
-    
-    with col_n1: st.button("🗑️ C", use_container_width=True, on_click=clear_input, type="primary")
-    with col_n2: st.button("0", use_container_width=True, on_click=add_digit, args=(0,))
-    with col_n3: st.button("⌫", use_container_width=True, on_click=backspace)
+    actual_qty = st.slider(
+        label="Geser tombol ini sesuai hasil produksi",
+        min_value=0,
+        max_value=max_slider_val,
+        value=0, # Default 0
+        step=1,  # Kelipatan 1
+        help=f"Max slider diset ke {max_slider_val} berdasarkan target mesin."
+    )
 
+    # --- TOMBOL SUBMIT ---
+    st.write("")
+    submitted = st.form_submit_button("💾 SIMPAN DATA", type="primary")
+
+    if submitted:
+        if actual_qty == 0:
+            st.warning("⚠️ Qty 0. Pastikan ini benar (Breakdown/Stop).")
+        
+        data_insert = {
+            "machine_id": selected_machine,
+            "part_no": detail_part['part_no'],
+            "hour_index": selected_hour,
+            "actual_qty": actual_qty,
+            "snapshot_target": float(target_val)
+        }
+
+        try:
+            supabase.table("monitor_per_hour").insert(data_insert).execute()
+            st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs Disimpan!")
+            time.sleep(1)
+            st.rerun()
+
+        except Exception as e:
+            st.error(f"❌ Terjadi Kesalahan: {e}")
+
+# --- 3. HISTORY ---
+st.markdown("### 🕒 5 Input Terakhir")
+last_data = supabase.table("monitor_per_hour").select("*").order("id", desc=True).limit(5).execute()
+
+if last_data.data:
+    df_last = pd.DataFrame(last_data.data)
+    st.dataframe(
+        df_last[['machine_id', 'hour_index', 'actual_qty', 'created_at']], 
+        hide_index=True,
+        use_container_width=True
+    )
 # --- TOMBOL SUBMIT ---
 st.write("") # Spacer
 submitted = st.button("💾 SIMPAN DATA", type="primary", use_container_width=True)
@@ -181,3 +179,4 @@ if last_data.data:
         hide_index=True,
         use_container_width=True
     )
+
