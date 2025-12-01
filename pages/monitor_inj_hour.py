@@ -57,96 +57,88 @@ else:
     st.stop()
 
 # =========================================================================
-# BAGIAN 2: LOGIC DUAL INPUT (SLIDER + MANUAL)
+# BAGIAN 2: LOGIC DUAL INPUT (TANPA FORM BIAR REALTIME)
 # =========================================================================
 
 # Inisialisasi State Qty kalau belum ada
 if "current_qty" not in st.session_state:
     st.session_state.current_qty = 0
 
-# Callback 1: Kalau Slider Digeser -> Update Session State
+# Callback: Slider Digeser -> Update Session State
 def update_from_slider():
     st.session_state.current_qty = st.session_state.slider_val
 
-# Callback 2: Kalau Kotak Diketik -> Update Session State
+# Callback: Kotak Diketik -> Update Session State
 def update_from_input():
     st.session_state.current_qty = st.session_state.number_val
 
-# Batas Max Slider (Target x 1.5 biar aman, min 100)
+# Batas Max Slider
 max_slider = max(int(target_val * 1.5), 100)
 
-with st.form("input_form", clear_on_submit=False): # clear_on_submit False biar angka gak ilang pas error
-    st.markdown("---") 
+st.markdown("---") 
 
-    # Logic Jam WIB
-    now_wib = datetime.utcnow() + timedelta(hours=7)
-    current_hour = now_wib.hour 
-    hours_list = list(range(0, 24))
+# --- LOGIC JAM (WIB FIX) ---
+now_wib = datetime.utcnow() + timedelta(hours=7)
+current_hour = now_wib.hour 
+hours_list = list(range(0, 24))
+try:
+    default_idx = hours_list.index(current_hour)
+except:
+    default_idx = 0
+
+selected_hour = st.selectbox("Jam Ke-", options=hours_list, index=default_idx)
+
+st.write("### Actual Qty")
+
+# --- A. SLIDER ---
+safe_slider_value = min(st.session_state.current_qty, max_slider)
+
+st.slider(
+    label="Geser Cepat",
+    min_value=0,
+    max_value=max_slider,
+    value=safe_slider_value,
+    key="slider_val",    
+    on_change=update_from_slider # Aman karena diluar st.form
+)
+
+# --- B. NUMBER INPUT ---
+actual_qty = st.number_input(
+    label="Ketik Manual (Jika Over Target)",
+    min_value=0,
+    step=1,
+    value=st.session_state.current_qty,
+    key="number_val",    
+    on_change=update_from_input # Aman karena diluar st.form
+)
+
+# --- TOMBOL SUBMIT (Bukan form_submit_button) ---
+st.write("")
+submitted = st.button("💾 SIMPAN DATA", type="primary", use_container_width=True)
+
+if submitted:
+    if actual_qty == 0:
+        st.warning("⚠️ Qty 0. Pastikan ini benar.")
+    
+    data_insert = {
+        "machine_id": selected_machine,
+        "part_no": detail_part['part_no'],
+        "hour_index": selected_hour,
+        "actual_qty": actual_qty,
+        "snapshot_target": float(target_val)
+    }
+
     try:
-        default_idx = hours_list.index(current_hour)
-    except:
-        default_idx = 0
-
-    selected_hour = st.selectbox("Jam Ke-", options=hours_list, index=default_idx)
-
-    st.write("### Actual Qty")
-    
-    # --- A. SLIDER (INPUT CEPAT) ---
-    # Value slider kita ambil dari session state.
-    # Tapi harus dijaga: kalau angka manual > max slider, slider mentok di max aja biar gak error.
-    safe_slider_value = min(st.session_state.current_qty, max_slider)
-    
-    st.slider(
-        label="Geser Cepat",
-        min_value=0,
-        max_value=max_slider,
-        value=safe_slider_value,
-        key="slider_val",    # Key unik
-        on_change=update_from_slider # Trigger fungsi update
-    )
-
-    # --- B. NUMBER INPUT (INPUT PRESISI & OVER TARGET) ---
-    # Ini input utama yang nilai akhirnya kita pakai
-    actual_qty = st.number_input(
-        label="Ketik Manual (Jika Over Target)",
-        min_value=0,
-        step=1,
-        value=st.session_state.current_qty,
-        key="number_val",    # Key unik
-        on_change=update_from_input # Trigger fungsi update
-    )
-
-    # --- TOMBOL SUBMIT ---
-    st.write("")
-    submitted = st.form_submit_button("💾 SIMPAN DATA", type="primary")
-
-    if submitted:
-        # Pake nilai dari 'actual_qty' (Input Kotak) karena itu yang paling akurat
-        # Walaupun slider mentok 100, kalau kotak diisi 105, data yang diambil 105.
+        supabase.table("monitor_per_hour").insert(data_insert).execute()
+        st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs Disimpan!")
         
-        if actual_qty == 0:
-            st.warning("⚠️ Qty 0. Pastikan ini benar.")
-        
-        data_insert = {
-            "machine_id": selected_machine,
-            "part_no": detail_part['part_no'],
-            "hour_index": selected_hour,
-            "actual_qty": actual_qty,
-            "snapshot_target": float(target_val)
-        }
+        # Reset angka jadi 0 setelah sukses
+        st.session_state.current_qty = 0
+        time.sleep(1)
+        st.rerun()
 
-        try:
-            supabase.table("monitor_per_hour").insert(data_insert).execute()
-            st.success(f"✅ Data {selected_machine} Jam {selected_hour} = {actual_qty} Pcs Disimpan!")
-            
-            # Reset angka jadi 0 setelah sukses
-            st.session_state.current_qty = 0
-            # Kita refresh page manual biar slider balik ke 0
-            time.sleep(1)
-            st.rerun()
-
-        except Exception as e:
-            st.error(f"❌ Terjadi Kesalahan: {e}")
+    except Exception as e:
+        st.error(f"❌ Terjadi Kesalahan: {e}")
 
 # --- HISTORY ---
 st.markdown("### 🕒 5 Input Terakhir")
@@ -159,46 +151,3 @@ if last_data.data:
         hide_index=True,
         use_container_width=True
     )
-# --- TOMBOL SUBMIT ---
-st.write("") # Spacer
-submitted = st.button("💾 SIMPAN DATA", type="primary", use_container_width=True)
-
-if submitted:
-    if actual_qty == 0:
-        st.warning("⚠️ Qty 0. Pastikan ini benar (Breakdown/Stop).")
-    
-    # Payload Data
-    data_insert = {
-        "machine_id": selected_machine,
-        "part_no": detail_part['part_no'],
-        "hour_index": selected_hour,
-        "actual_qty": actual_qty,
-        "snapshot_target": float(detail_part['target_hour'])
-    }
-
-    try:
-        supabase.table("monitor_per_hour").insert(data_insert).execute()
-        st.success(f"✅ Data {selected_machine} Jam {selected_hour} berhasil disimpan!")
-        
-        # RESET INPUT MANUAL SETELAH SIMPAN
-        st.session_state.qty_input = 0 
-        
-        time.sleep(1)
-        st.rerun()
-
-    except Exception as e:
-        st.error(f"❌ Terjadi Kesalahan: {e}")
-
-# --- 5. HISTORY ---
-st.markdown("### 🕒 5 Input Terakhir")
-last_data = supabase.table("monitor_per_hour").select("*").order("id", desc=True).limit(5).execute()
-
-if last_data.data:
-    df_last = pd.DataFrame(last_data.data)
-    st.dataframe(
-        df_last[['machine_id', 'hour_index', 'actual_qty', 'created_at']], 
-        hide_index=True,
-        use_container_width=True
-    )
-
-
