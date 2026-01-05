@@ -1,0 +1,4 @@
+supabase
+requests
+pytz
+python-telegram-bot
