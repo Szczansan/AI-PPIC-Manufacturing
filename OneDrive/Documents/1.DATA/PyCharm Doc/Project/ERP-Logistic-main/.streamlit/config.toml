@@ -1,0 +1,19 @@
+[server]
+headless = true
+enableCORS = false
+enableXsrfProtection = false
+fileWatcherType = "none"
+
+[runner]
+magicEnabled = false
+fastReruns = true    # <--- INI JUARANYA. Bikin UI lebih responsif.
+
+[browser]
+gatherUsageStats = false
+serverAddress = "0.0.0.0"
+
+[theme]
+base = "dark"
+primaryColor = "#00ADB5"
+backgroundColor = "#0E1117"
+secondaryBackgroundColor = "#262730"

@@ -1,0 +1,12 @@
+streamlit
+pandas
+supabase
+fpdf
+pyarrow
+xlsxwriter
+altair
+streamlit-cropper
+Pillow
+
+
+
